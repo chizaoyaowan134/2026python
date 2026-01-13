@@ -51,6 +51,40 @@ def preOrder(node):
     preOrder(node.rchild)
 
 
+def midOrder(node):
+    if node == None:
+         return
+    midOrder(node.lchild)
+    print(node.elem, end=" ")
+    midOrder(node.rchild)
+
+
+def postOrder(node):
+    if node == None:
+         return
+    postOrder(node.lchild)
+    postOrder(node.rchild)
+    print(node.elem, end=" ")
+
+
+def levelOrder(node):
+    """层序遍历"""
+    if node == None:
+        return
+    myQueue = []
+    myQueue.append(node)
+    while myQueue:
+        # 取出队列的第一个节点
+        treeNode = myQueue.pop(0)
+        print(treeNode.elem, end=" ")
+        # 如果左孩子不为空，加入队列
+        if treeNode.lchild != None:
+            myQueue.append(treeNode.lchild)
+        # 如果右孩子不为空，加入队列
+        if treeNode.rchild != None:
+            myQueue.append(treeNode.rchild)
+
+
 if __name__ == "__main__":
 
     tree = Tree()
@@ -60,4 +94,18 @@ if __name__ == "__main__":
     # 测试前序遍历
     print("前序遍历结果如下：")
     preOrder(tree.root)
+    print()
+
+
+    print("中序遍历结果如下：")
+    midOrder(tree.root)
+    print()
+
+    print("后序遍历结果如下：")
+    postOrder(tree.root)
+    print()
+
+
+    print("层序遍历结果如下：")
+    levelOrder(tree.root)
     print()
